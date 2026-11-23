@@ -1,0 +1,36 @@
+services:
+  api:
+    image: smartstore-ai:v1
+    container_name: smartstore-api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - dynamodb
+  
+  postgres:
+    image: postgres:16
+    container_name: smartstore-postgres
+    environment:
+      POSTGRES_DB: smartstore
+      POSTGRES_USER: smartstore
+      POSTGRES_PASSWORD: localdev123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smartstore -d smartstore"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    container_name: smartstore-dynamodb
+    command: "-jar DynamoDBLocal.jar -inMemory -sharedDb"
+    ports:
+      - "8001:8000"
+      
+volumes:
+  postgres_data:
