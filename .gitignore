@@ -12,6 +12,7 @@ htmlcov/
 
 # Data
 data/raw/
+data/raw/*/*.csv
 data/processed/
 data/synthetic/
 data/exports/
