@@ -3,3 +3,4 @@ __pycache__/
 .terraform/
 *.tfstate*
 .DS_Store
+data/raw
