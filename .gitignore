@@ -1,6 +1,26 @@
+# Python
 .venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.env.*
+
+# Data
+data/raw/
+data/processed/
+data/synthetic/
+data/exports/
+
+# Terraform
 .terraform/
-*.tfstate*
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# OS
 .DS_Store
-data/raw
