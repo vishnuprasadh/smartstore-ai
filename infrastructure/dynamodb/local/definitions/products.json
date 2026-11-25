@@ -1,0 +1,82 @@
+{
+  "TableName": "products",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "brands_key",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "code",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "pnns_groups_1_key",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "pnns_groups_2_key",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "product_name_sort",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "code",
+      "KeyType": "HASH"
+    }
+  ],
+  "BillingMode": "PAY_PER_REQUEST",
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "gsi-products-by-category",
+      "KeySchema": [
+        {
+          "AttributeName": "pnns_groups_1_key",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "product_name_sort",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    },
+    {
+      "IndexName": "gsi-products-by-subcategory",
+      "KeySchema": [
+        {
+          "AttributeName": "pnns_groups_2_key",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "product_name_sort",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    },
+    {
+      "IndexName": "gsi-products-by-brand",
+      "KeySchema": [
+        {
+          "AttributeName": "brands_key",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "product_name_sort",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    }
+  ]
+}

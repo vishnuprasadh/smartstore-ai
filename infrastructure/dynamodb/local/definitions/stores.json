@@ -1,0 +1,16 @@
+{
+  "TableName": "stores",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "storeId",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "storeId",
+      "KeyType": "HASH"
+    }
+  ],
+  "BillingMode": "PAY_PER_REQUEST"
+}
